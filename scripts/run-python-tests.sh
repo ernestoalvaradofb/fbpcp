@@ -10,14 +10,12 @@ SCRIPTS_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "${SCRIPTS_DIRECTORY}"
 cd "${SCRIPTS_DIRECTORY}/.."
 
-unit_test_dirs="tests onedocker/tests"
-
-files=$(find "${unit_test_dirs}" -name '*.py')
+files=$(find tests onedocker/tests "${SCRIPTS_DIRECTORY}" -name '*.py')
 echo "${files}"
 if [[ -z "${files}" ]]; then
   echo 'No test files found, exiting.'
   exit 1
 fi
 
-echo " Running all tests:"
-echo "${files}" | xargs python3 -m unittest -v
+# echo " Running all tests:"
+# echo "${files}" | xargs python3 -m unittest -v
